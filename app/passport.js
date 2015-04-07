@@ -1,6 +1,7 @@
+var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
 
-module.exports = function(passport) {
+module.exports = function() {
 	// Define the strategy to be used by PassportJS
 	passport.use(new localStrategy(
 	  function(username, password, done) {
@@ -19,12 +20,4 @@ module.exports = function(passport) {
 	passport.deserializeUser(function(user, done) {
 	    done(null, user);
 	});
-
-	// Define a middleware function to be used for every secured routes
-	// var auth = function(req, res, next){
-	//   if (!req.isAuthenticated()) 
-	//   	res.send(401);
-	//   else
-	//   	next();
-	// };
 };
